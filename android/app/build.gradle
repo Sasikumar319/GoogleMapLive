@@ -92,6 +92,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -116,4 +124,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+
+  implementation ("com.google.android.gms:play-services-base:18.0.1")
+  implementation ("com.google.android.gms:play-services-location:21.0.1")
+  implementation ("com.google.android.gms:play-services-maps:18.0.2")
 }
